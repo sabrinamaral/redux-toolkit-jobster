@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { Logo, FormRow } from "../components";
+import { toast } from "react-toastify";
 
 const initialState = {
   name: "",
@@ -12,24 +13,34 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState);
   const handleChange = (e) => {
-    console.log(e.target);
+    const name = e.target.name;
+    const value = e.target.value;
+    setValues({ ...values, [name]: value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      toast.error("please fill out all fields");
+    }
+  };
+  const toggleRegister = () => {
+    setValues({ ...values, isMember: !values.isMember });
   };
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={handleSubmit}>
         <Logo />
-        <h3>Login</h3>
+        <h3>{values.isMember ? "Login" : "Register"}</h3>
         {/* name field */}
-        <FormRow
-          type="text"
-          name="name"
-          value={values.name}
-          handleChange={handleChange}
-        />
+        {!values.isMember && (
+          <FormRow
+            type="text"
+            name="name"
+            value={values.name}
+            handleChange={handleChange}
+          />
+        )}
         {/* email field */}
         <FormRow
           type="email"
@@ -47,8 +58,11 @@ const Register = () => {
         <button type="submit" className="btn btn-block" onSubmit={handleSubmit}>
           submit
         </button>
-        <p className="coffee-info">
-          Not a member yet? <a> Register</a>
+        <p>
+          {values.isMember ? "Not a member yet?" : "Already a member?"}
+          <button type="button" className="member-btn" onClick={toggleRegister}>
+            {values.isMember ? "Register" : "Login"}
+          </button>
         </p>
       </form>
     </Wrapper>
