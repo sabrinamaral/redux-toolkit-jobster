@@ -47,7 +47,7 @@ const Register = () => {
         navigate("/");
       }, 3000);
     }
-  }, [user]);
+  }, [user, navigate]);
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={handleSubmit}>
