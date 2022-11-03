@@ -4,5 +4,14 @@ import Navbar from "./Navbar";
 import SmallSideBar from "./SmallSidebar";
 import BigSidebar from "./BigSidebar";
 import NavLinks from "./NavLinks";
+import FormRowSelect from "./FormRowSelect";
 
-export { BigSidebar, FormRow, Navbar, NavLinks, Logo, SmallSideBar };
+export {
+  BigSidebar,
+  FormRow,
+  Navbar,
+  NavLinks,
+  Logo,
+  SmallSideBar,
+  FormRowSelect,
+};
