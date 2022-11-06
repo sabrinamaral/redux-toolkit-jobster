@@ -13,12 +13,12 @@ import JobInfo from "./JobInfo";
 import StatsContainer from "../components/StatsContainer";
 import ChartsContainer from "../components/ChartsContainer";
 import StatItem from "./StatItem";
-import AreaChart from "./AreaChart";
-import BarChart from "./BarChart";
+import AreaChartComponent from "./AreaChart";
+import BarChartComponent from "./BarChart";
 
 export {
-  AreaChart,
-  BarChart,
+  AreaChartComponent,
+  BarChartComponent,
   BigSidebar,
   FormRow,
   Navbar,
