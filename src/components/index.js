@@ -15,23 +15,25 @@ import ChartsContainer from "../components/ChartsContainer";
 import StatItem from "./StatItem";
 import AreaChartComponent from "./AreaChart";
 import BarChartComponent from "./BarChart";
+import PaginationContainer from "./PaginationContainer";
 
 export {
   AreaChartComponent,
   BarChartComponent,
   BigSidebar,
+  ChartsContainer,
   FormRow,
-  Navbar,
-  NavLinks,
-  Loading,
-  Logo,
-  SmallSideBar,
   FormRowSelect,
-  SearchContainer,
-  JobsContainer,
   Job,
   JobInfo,
+  JobsContainer,
+  Loading,
+  Logo,
+  Navbar,
+  NavLinks,
+  PaginationContainer,
+  SmallSideBar,
+  SearchContainer,
   StatsContainer,
-  ChartsContainer,
   StatItem,
 };

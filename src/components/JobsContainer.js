@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Wrapper from "../assets/wrappers/JobsContainer";
-import { Job, Loading } from "../components";
+import { Job, Loading, PaginationContainer } from "../components";
 import { getAllJobs } from "../features/allJobs/allJobsSlice";
 
 const JobsContainer = () => {
-  const { isLoading, jobs } = useSelector((store) => store.allJobs);
+  const { isLoading, jobs, numOfPages, page, totalJobs } = useSelector(
+    (store) => store.allJobs
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,12 +30,15 @@ const JobsContainer = () => {
   }
   return (
     <Wrapper>
-      <h5>jobs info</h5>
+      <h5>
+        {totalJobs} job{jobs.length > 1 ? "s" : null} found
+      </h5>
       <div className="jobs">
         {jobs.map((job) => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
+      {numOfPages > 1 && <PaginationContainer />}
     </Wrapper>
   );
 };
