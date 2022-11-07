@@ -5,14 +5,23 @@ import { Job, Loading, PaginationContainer } from "../components";
 import { getAllJobs } from "../features/allJobs/allJobsSlice";
 
 const JobsContainer = () => {
-  const { isLoading, jobs, numOfPages, page, totalJobs } = useSelector(
-    (store) => store.allJobs
-  );
+  const {
+    isLoading,
+    jobs,
+    numOfPages,
+    page,
+    totalJobs,
+    search,
+    searchStatus,
+    searchType,
+    sort,
+  } = useSelector((store) => store.allJobs);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllJobs());
-  }, []);
+    // eslint-disable-next-line
+  }, [page, search, searchStatus, searchType, sort]);
 
   if (isLoading) {
     return (
